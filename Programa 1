@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class IdentificarCadena {
+
+    // Método para identificar si la cadena es un número, una palabra o una mezcla
+    public static void identificarCadena(String cadena) {
+        if (cadena.matches("[0-9]+")) {
+            System.out.println("'" + cadena + "' es un número.");
+        } else if (cadena.matches("[a-zA-Z]+")) {
+            System.out.println("'" + cadena + "' es una palabra.");
+        } else {
+            System.out.println("'" + cadena + "' es una mezcla de caracteres o no es ni un número ni una palabra.");
+        }
+    }
+
+    // Método principal para ejecutar el programa
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);  // Crear un objeto Scanner para leer la entrada del usuario
+        System.out.println("Ingresa una cadena:");
+        String cadena = scanner.nextLine();  // Leer la entrada del usuario
+
+        identificarCadena(cadena);  // Llamar al método para identificar la cadena
+
+        scanner.close();  // Cerrar el objeto Scanner
+    }
+}
