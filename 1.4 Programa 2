@@ -1,0 +1,60 @@
+import java.util.Scanner;
+
+public class ClasificadorDeCadenas {
+
+    private int contadorNumeros = 0;
+    private int contadorPalabras = 0;
+    private int contadorCompuestas = 0;
+
+    public void clasificarCadena(String cadena) {
+        boolean tieneNumero = false;
+        boolean tieneLetra = false;
+
+        for (char c : cadena.toCharArray()) {
+            if (Character.isDigit(c)) {
+                tieneNumero = true;
+            }
+            if (Character.isLetter(c)) {
+                tieneLetra = true;
+            }
+        }
+
+        if (tieneNumero && tieneLetra) {
+            System.out.println("La cadena es compuesta.");
+            contadorCompuestas++;
+        } else if (tieneNumero) {
+            System.out.println("La cadena es un número.");
+            contadorNumeros++;
+        } else if (tieneLetra) {
+            System.out.println("La cadena es una palabra.");
+            contadorPalabras++;
+        } else {
+            System.out.println("La cadena no contiene números ni letras.");
+        }
+    }
+
+    public void mostrarContadores() {
+        System.out.println("Cantidad de números: " + contadorNumeros);
+        System.out.println("Cantidad de palabras: " + contadorPalabras);
+        System.out.println("Cantidad de cadenas compuestas: " + contadorCompuestas);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ClasificadorDeCadenas clasificador = new ClasificadorDeCadenas();
+
+        String entrada;
+        do {
+            System.out.println("Ingrese una cadena (o 'salir' para terminar):");
+            entrada = scanner.nextLine();
+
+            if (!entrada.equalsIgnoreCase("salir")) {
+                clasificador.clasificarCadena(entrada);
+            }
+
+        } while (!entrada.equalsIgnoreCase("salir"));
+
+        clasificador.mostrarContadores();
+        scanner.close();
+    }
+}
