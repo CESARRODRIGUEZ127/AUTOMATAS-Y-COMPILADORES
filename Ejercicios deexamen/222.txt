@@ -1,0 +1,19 @@
+%{
+#include <stdio.h>
+%}
+
+%%
+[0-9]+        { printf("NUMERO: %s\n", yytext); }
+\*            { printf("OPERADOR MULTIPLICACION: %s\n", yytext); }
+[ \t\n]       { /* Ignorar espacios, tabulaciones y saltos de línea */ }
+.             { printf("CARACTER DESCONOCIDO: %s\n", yytext); }
+%%
+
+int main() {
+    yylex();
+    return 0;
+}
+
+int yywrap() {
+    return 1;
+}
